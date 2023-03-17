@@ -8,12 +8,17 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.system.TrainSystem;
+import hu.bme.mit.train.tachograph.Tachograph; 
+import java.util.Date; 
+import java.util.Map; 
 
 public class TrainSystemTest {
 
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
+	Tachograph tachograph; 
+
 	
 	@Before
 	public void before() {
@@ -21,6 +26,7 @@ public class TrainSystemTest {
 		controller = system.getController();
 		sensor = system.getSensor();
 		user = system.getUser();
+		tachograph = system.getTachograph(); 
 
 		sensor.overrideSpeedLimit(50);
 	}
@@ -65,6 +71,20 @@ public class TrainSystemTest {
 		user.pushEmergencyBreaking();
 		Assert.assertEquals(0, controller.getReferenceSpeed());  
    }  
+
+  @Test
+  public void TestTachoGraph (){
+	  Date current = new Date(System.currentTimeMillis());
+	  user.overrideJoystickPosition(4);
+	  controller.followSpeed();
+	  tachograph.addNewData(current, 4, controller.getReferenceSpeed());
+	  Map<Integer, Integer> timeMap = tachograph.getJoystickPositionAndRefSpeedByTime(current);
+	  Map.Entry<Integer, Integer>  lastData = timeMap.entrySet().iterator().next(); 
+	  int joystickPosition = lastData.getKey(); 
+	  int referenceSpeed = lastData.getValue(); 
+	  Assert.assertEquals(4, joystickPosition); 
+	  Assert.assertEquals(controller.getReferenceSpeed(), referenceSpeed); 
+  }  
 
 
 	

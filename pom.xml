@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
 
     <modules>
+	    <module>train-tachograph</module>   	
         <module>train-interfaces</module>
         <module>train-controller</module>
         <module>train-sensor</module>
