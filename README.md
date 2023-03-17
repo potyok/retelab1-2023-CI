@@ -62,3 +62,20 @@ The figure below illustrates this behavior using an example.
 1. As the joystick remains at a positive value, the reference speed is incremented again.
 1. However, it reaches the speed limit so in the next step it is not incremented even though the joystick still has a positive value.
 1. Later, the joystick is set to a negative position for one time unit, making the reference speed to decrease as well.
+
+# Retelab 1 - CI
+## Néhány kezdő lépés a feladatok megoldásához:
+
+* Készítsd el a kiindulási repository fork-ját a saját github fiókodba.
+* Ezután indítsd el a virtuális gépet a kari felhőben.
+* Klónozd le a repository-t a virtuális gépre.
+
+[Olvasd el, hogyan kell Markdown szintaxist használni](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+| Feladatok | Elkészültség | Értékelés  |
+| ------------- |:-------------:| -----:|
+| Klónozd le a repo-t | [x]  | 1/1 |
+| Módosítsd a Markdown-t |[x]       |   3/3 |
+| Készítsd el a maradék feladatot |[ ] |    6/0 |
+
+
