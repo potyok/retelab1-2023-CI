@@ -78,4 +78,4 @@ The figure below illustrates this behavior using an example.
 | Módosítsd a Markdown-t |[x]       |   3/3 |
 | Készítsd el a maradék feladatot |[ ] |    6/0 |
 
-
+Most a branch-B ágon is ide írok egy kommentet, hogy előálljon a merge-konflikt.
