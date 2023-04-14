@@ -58,13 +58,13 @@ jobs:
       
     - name: Generate Coverage Report
       run: |
-        mvn -B verify -Djacoco.destFile=exportJacoco/jacoco-total.exec
+        mvn -B verify -Djacoco.destFile=../exportJacoco/jacoco-total.exec
 
     - name: Upload Report
       uses: 'actions/upload-artifact@v2'
       with:
           name: jacoco-report
-          path: exportJacoco/jacoco-total.exec
+          path: ${{ github.workspace }}/exportJacoco/jacoco-total.exec
           
     - uses: actions/download-artifact@v2
       with:
