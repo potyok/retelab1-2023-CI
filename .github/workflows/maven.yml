@@ -65,23 +65,11 @@ jobs:
       with:
           name: jacoco-report
           path: ${{ github.workspace }}/exportJacoco/jacoco-total.exec
-          
-    - uses: actions/download-artifact@v2
+    - uses: 'actions/upload-artifact@v2'
       with:
-          name: jacoco-report
-          path: target/
-          
-    - name: merge results
-      run: |
-          mvn jacoco:merge package jacoco:report verify -DskipTests=true
-      
-    - name: Upload jacoco coverage despite the check result
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v2
-      with:
-          name: coverage-results-report
-          path: target/site/jacoco/
-          if-no-files-found: error
+          name: jacoco-sensor-report
+          path: ${{ github.workspace }}/train-sensor/target/site/jacoco/
+     
 
 
 
