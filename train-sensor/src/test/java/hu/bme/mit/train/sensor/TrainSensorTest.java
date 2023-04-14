@@ -16,8 +16,8 @@ public class TrainSensorTest {
 
     @Before
     public void before() {
-        mockController = mock(TrainControllerImpl.class);
-        mockUser = mock(TrainUserImpl.class);
+        mockController = mock(TrainController.class);
+        mockUser = mock(TrainUser.class);
 
         Sensor = new TrainSensorImpl(mockController, mockUser);
     }
