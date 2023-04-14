@@ -77,13 +77,14 @@ public class TrainSystemTest {
 	  Date current = new Date(System.currentTimeMillis());
 	  user.overrideJoystickPosition(4);
 	  controller.followSpeed();
-	  tachograph.addNewData(current, 4, controller.getReferenceSpeed());
+	  int refSpeed = controller.getReferenceSpeed();
+	  tachograph.addNewData(current, 4, refSpeed);
 	  Map<Integer, Integer> timeMap = tachograph.getJoystickPositionAndRefSpeedByTime(current);
 	  Map.Entry<Integer, Integer>  lastData = timeMap.entrySet().iterator().next(); 
 	  int joystickPosition = lastData.getKey(); 
 	  int referenceSpeed = lastData.getValue(); 
 	  Assert.assertEquals(4, joystickPosition); 
-	  Assert.assertEquals(controller.getReferenceSpeed(), referenceSpeed); 
+	  Assert.assertEquals(refSpeed, referenceSpeed); 
   }  
 
 
