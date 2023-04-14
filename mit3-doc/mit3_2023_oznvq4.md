@@ -85,3 +85,7 @@ Elkészítettem a teszteket és lefuttattam őket, volt pár elírás a tesztekb
 ![](f3_3_1.png)
 ![](f3_3_2.png)
 Beilleszttem a pom.xml-be a megfelelő sorokat, majd kiadtam a parancsot. Megvizsgáltam az index.html tartalmát, amiben azt találtam, hogy a sensor overrideLimitSpeed metódusát teljes tesztlefedettséggel teszteltem le.
+
+# 3.4. feladat
+![](f3_4.png)
+Hozzáadtam a Github Actions-höz a Jacoco bővítményt és kigeneráltam a teljes reportot, amelyet külön elmentek, mintahogy az a képen is látahtó.
