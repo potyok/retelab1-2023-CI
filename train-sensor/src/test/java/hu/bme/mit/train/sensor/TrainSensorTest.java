@@ -25,7 +25,7 @@ public class TrainSensorTest {
     @Test
     public void TestNegativeLimitAlert() {
         when(mockController.getReferenceSpeed()).thenReturn(100);
-        sensor.setSpeedLimit(-1);
+        sensor.overrideSpeedLimit(-1);
         verify(mockUser, times(1)).setAlarmState(true);
         verify(mockUser, times(0)).setAlarmState(false);
     }
@@ -33,7 +33,7 @@ public class TrainSensorTest {
     @Test
     public void TestVeryHighLimitAlert() {
         when(mockController.getReferenceSpeed()).thenReturn(100);
-        sensor.setSpeedLimit(501);
+        sensor.overrideSpeedLimit(501);
         verify(mockUser, times(1)).setAlarmState(true);
         verify(mockUser, times(0)).setAlarmState(false);
     }
@@ -41,7 +41,7 @@ public class TrainSensorTest {
     @Test
     public void TestTooBigLimitChangeAlert() {
         when(mockController.getReferenceSpeed()).thenReturn(150);
-        sensor.setSpeedLimit(50);
+        sensor.overrideSpeedLimit(50);
         verify(mockUser, times(1)).setAlarmState(true);
         verify(mockUser, times(0)).setAlarmState(false);
     }
@@ -49,7 +49,7 @@ public class TrainSensorTest {
     @Test
     public void TestNormalLimitChangeNoAlert() {
         when(mockController.getReferenceSpeed()).thenReturn(150);
-        sensor.setSpeedLimit(100);
+        sensor.overrideSpeedLimit(100);
         verify(mockUser, times(0)).setAlarmState(true);
         verify(mockUser, times(1)).setAlarmState(false);
     }
