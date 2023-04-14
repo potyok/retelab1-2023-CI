@@ -58,24 +58,30 @@ jobs:
       
     - name: Generate Coverage Report
       run: |
-        mvn -B package --file pom.xml
+        mvn -B verify -Djacoco.destFile=exportJacoco/jacoco-total.exec
 
     - name: Upload Report
       uses: 'actions/upload-artifact@v2'
       with:
           name: jacoco-report
-          path: ${{ github.workspace }}/train-sensor/target/site/jacoco/
-
-    - name: Add coverage to PR
-      id: jacoco
-      uses: madrapps/jacoco-report@v1.2
+          path: exportJacoco/jacoco-total.exec
+          
+    - uses: actions/download-artifact@v2
       with:
-          paths: ${{ github.workspace }}/train-sensor/target/site/jacoco/
-          token: ${{ secrets.GITHUB_TOKEN }}
-          min-coverage-overall: 0
-          min-coverage-changed-files: 0
-          title: Code Coverage
-
+          name: jacoco-report
+          path: target/
+          
+    - name: merge results
+      run: |
+          mvn jacoco:merge package jacoco:report verify -DskipTests=true
+      
+    - name: Upload jacoco coverage despite the check result
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+          name: coverage-results-report
+          path: target/site/jacoco/
+          if-no-files-found: error
 
 
 
