@@ -16,8 +16,7 @@ public class TrainControllerImpl implements TrainController {
 	private void controllReferenceSpeed() {
 		while (true) {
 			try {
-				referenceSpeed += step;
-				enforceSpeedLimit();
+				followSpeed();
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				break;
